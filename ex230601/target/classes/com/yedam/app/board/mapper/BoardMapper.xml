@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.yedam.app.board.mapper.BoardMapper">
+ 	
+ 	<select id="boardList" resultType="BoardVO">
+ 		select * from board
+ 		order by 1 desc
+ 	</select>
+ 	
+ 	<select id="boardGet" resultType="BoardVO" parameterType="int">
+ 		select * from board
+ 		where board_no = #{boardNo}
+ 	</select>
+ 	
+ 	<insert id="boardAdd">
+ 		insert into board
+ 		values(board_seq.nextval,#{boardTitle},#{boardWriter},sysdate,0,#{boardContent})
+ 	</insert>
+ 	
+ 	<delete id="boardDelete" parameterType="int">
+ 		delete board where board_no = #{boardNo}
+ 	</delete>
+ 	
+ 	<update id="boardUpdate" parameterType="BoardVO">
+ 		UPDATE board
+		SET board_title = #{boardTitle}, board_content=#{boardContent}
+		WHERE board_no= #{boardNo}
+ 	</update>
+ 	
+ </mapper>
+  
+  

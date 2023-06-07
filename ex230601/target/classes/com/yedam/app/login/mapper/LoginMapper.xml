@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.yedam.app.login.mapper.LoginMapper">
+ 
+ 
+ <select id="login" resultType="LoginVO" parameterType="LoginVO">
+	select *
+	from members
+	<where>
+	<if test="email != null and email != '' ">
+	 and email= #{email}
+	 </if>
+	 <if test="password !=null and password != '' ">
+	 and password = #{password}
+	 </if>
+	</where>
+ 	</select>
+ 	
+ 	<insert id="member" parameterType="LoginVO">
+ 		insert into members 
+ 		values
+ 		(#{email},#{password},#{name},#{phone},#{address},sysdate)
+ 	</insert>
+ 	
+ 	<select id="memberList" resultType="LoginVO">
+ 		select *
+ 		from members
+ 		where 
+ 	
+ 	</select>
+ 	
+ 	
+ </mapper>
+  
+  
